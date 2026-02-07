@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  flyway:
+    enabled: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ur_username
+    password: ur_pass
+    url: ur_db_url
