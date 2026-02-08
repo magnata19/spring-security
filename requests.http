@@ -1,0 +1,29 @@
+### GET request to example server
+GET http://localhost:8080/test
+###
+
+###
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "name": "Davidson",
+  "email": "deh@email.com",
+  "password": "1234567"
+}
+###
+
+###
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+    "email": "deh@email.com",
+    "password": "1234567"
+}
+###
+
+###
+GET http://localhost:8080/test
+Authorization: 
+###

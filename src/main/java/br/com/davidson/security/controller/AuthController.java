@@ -1,5 +1,6 @@
 package br.com.davidson.security.controller;
 
+import br.com.davidson.security.config.TokenConfig;
 import br.com.davidson.security.domain.User;
 import br.com.davidson.security.dto.request.CreateUserRequest;
 import br.com.davidson.security.dto.request.LoginRequest;
@@ -25,11 +26,13 @@ public class AuthController {
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager; //responsavel por gerenciar autenticacao
     private final PasswordEncoder encoder;
+    private final TokenConfig tokenConfig;
 
-    public AuthController(UserRepository userRepository, AuthenticationManager authenticationManager, PasswordEncoder encoder) {
+    public AuthController(UserRepository userRepository, AuthenticationManager authenticationManager, PasswordEncoder encoder, TokenConfig tokenConfig) {
         this.userRepository = userRepository;
         this.authenticationManager = authenticationManager;
         this.encoder = encoder;
+        this.tokenConfig = tokenConfig;
     }
 
     @PostMapping("/login")
@@ -37,6 +40,11 @@ public class AuthController {
         UsernamePasswordAuthenticationToken userAndPass = new UsernamePasswordAuthenticationToken(
                 loginRequest.email(), loginRequest.password());
         Authentication authenticate = authenticationManager.authenticate(userAndPass);
+
+        User principal = (User) authenticate.getPrincipal();
+        String token = tokenConfig.generateToken(principal);
+        return ResponseEntity.ok(new LoginResponse(token));
+
     }
 
     @PostMapping("/register")

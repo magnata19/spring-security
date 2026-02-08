@@ -17,6 +17,6 @@ public class AuthConfig implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findUserByEmail(username).orElseThrow(() -> new UsernameNotFoundException(""));
+        return userRepository.findUserByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + username));
     }
 }
