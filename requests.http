@@ -25,5 +25,5 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/test
-Authorization: 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInN1YiI6ImRlaEBlbWFpbC5jb20iLCJleHAiOjE3NzA1OTU4MDUsImlhdCI6MTc3MDU5NDkwNX0.OafRkK62RlkEPeu6xov7BeJo1H3jCjgL3q3GCa81nvk
 ###
